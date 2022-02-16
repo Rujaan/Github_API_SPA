@@ -2,24 +2,28 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { createContext } from "react";
 import Result from "./results";
-import { useLocation } from "react-router-dom";
 
 const Search = () => {
-  const location = useLocation();
   const [searchTerm, setSearchTerm] = useState({});
   const [repo, setRepo] = useState([]);
   const [sort, setSort] = useState(null);
   const [order, setOrder] = useState(null);
   const [page, setPage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  console.log(sort);
-  console.log(order);
-  console.log(page);
+
   const getRepo = async () => {
     setIsLoading(true);
 
     const response = await axios.get(
-      searchTerm && `https://api.github.com/search/repositories?q=${searchTerm}`
+      searchTerm &&
+        `https://api.github.com/search/repositories?q=${searchTerm}&sort=${
+          sort ? sort : "created"
+        }&order=${order ? order : "asc"}&per_page=${page ? page : "5"}`
+    );
+    console.log(
+      `https://api.github.com/search/repositories?q=${searchTerm}&sort=${
+        sort ? sort : "created"
+      }&order=${order ? order : "asc"}&per_page=${page ? page : "5"}`
     );
 
     const data = response.data;
@@ -27,6 +31,11 @@ const Search = () => {
     console.log(repo);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    getRepo();
+    console.log("redp");
+  }, [sort, order, page]);
 
   return (
     <div className=" flex flex-col items-center justify-center">
@@ -42,19 +51,19 @@ const Search = () => {
       </div>
       <div>
         <br />
-        <select name="sort" onClick={(e) => setSort(e.target.value)}>
+        <select name="sort" onChange={(e) => setSort(e.target.value)}>
           <option value="created"> created</option>
           <option value="updated">updated</option>
           <option value="stars">stars</option>
           <option value="fork">fork</option>
         </select>
 
-        <select name="order" onClick={(e) => setOrder(e.target.value)}>
+        <select name="order" onChange={(e) => setOrder(e.target.value)}>
           <option value="asc"> ascending</option>
           <option value="desc"> descending</option>
         </select>
 
-        <select name="page" onClick={(e) => setPage(e.target.value)}>
+        <select name="page" onChange={(e) => setPage(e.target.value)}>
           <option value="30">30</option>
           <option value="5">5</option>
           <option value="10">10</option>
