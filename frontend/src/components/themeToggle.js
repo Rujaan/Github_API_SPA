@@ -6,7 +6,6 @@ const Toggle = () => {
   const { theme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   return (
-    // <div>{theme}</div>
     <div className="transition duration-500 ease-in-out rounded-full">
       {theme === "dark" ? (
         <p

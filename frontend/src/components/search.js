@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { createContext } from "react";
 import Result from "./results";
+import { useLocation } from "react-router-dom";
 
 const Search = () => {
+  const location = useLocation();
   const [searchTerm, setSearchTerm] = useState({});
   const [repo, setRepo] = useState([]);
+  const [sort, setSort] = useState(null);
+  const [order, setOrder] = useState(null);
+  const [page, setPage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  console.log(sort);
+  console.log(order);
+  console.log(page);
   const getRepo = async () => {
     setIsLoading(true);
 
@@ -21,21 +28,6 @@ const Search = () => {
     setIsLoading(false);
   };
 
-  //   useEffect(() => {
-  //     const timer = setTimeout(() => {
-  //       const getRepo = async () => {
-  //         const res = await axios.get(
-  //           inputText &&
-  //             `https://api.github.com/search/repositories?q=${inputText}`
-  //         );
-  //         setRepo(res.data);
-  //         console.log(repo);
-  //       };
-  //       getRepo();
-  //     }, 1000);
-  //     return () => clearTimeout(timer);
-  //   }, [inputText, repo]);
-
   return (
     <div className=" flex flex-col items-center justify-center">
       <div className="input-group relative   mb-4 rounded flex ">
@@ -47,6 +39,29 @@ const Search = () => {
           aria-label="Search"
         />
         <button onClick={getRepo}> Search </button>
+      </div>
+      <div>
+        <br />
+        <select name="sort" onClick={(e) => setSort(e.target.value)}>
+          <option value="created"> created</option>
+          <option value="updated">updated</option>
+          <option value="stars">stars</option>
+          <option value="fork">fork</option>
+        </select>
+
+        <select name="order" onClick={(e) => setOrder(e.target.value)}>
+          <option value="asc"> ascending</option>
+          <option value="desc"> descending</option>
+        </select>
+
+        <select name="page" onClick={(e) => setPage(e.target.value)}>
+          <option value="30">30</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">20</option>
+          <option value="40">40</option>
+          <option value="80">80</option>
+        </select>
       </div>
       <Result isLoading={isLoading} repo={repo} />
     </div>
