@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+import "./App.css";
+import Toggle from "./components/themeToggle";
 
 function App() {
+  const { theme } = useSelector((state) => state.theme);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={
+        theme === "dark"
+          ? "dark bg-dark-black dark:text-light-white transition-all max-h-full max-w-full min-h-screen min-w-screen px-1 md:px-16 lg:px-20 xl:px-28"
+          : " bg-light-white  dark:text-light-white transition-all max-h-full max-w-full min-h-screen min-w-screen px-1 md:px-16 lg:px-20 xl:px-28"
+      }
+    >
+      <h1 className=" text-dark-black dark:text-light-white">hello</h1>
+      <Toggle />
     </div>
   );
 }
