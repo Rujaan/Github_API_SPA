@@ -30,10 +30,16 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### tailwind css
 `npm install -D tailwindcss postcss autoprefixer`
-For further information: x`https://tailwindcss.com/docs/guides/create-react-app
+For further information: `https://tailwindcss.com/docs/guides/create-react-app`
 
 ### react router dom
 `npm i react-router-dom@6`
 
+### react markdown
+`npm i react-markdown`
 
-In the project directory, you can run:
+## How to run
+
+Firsty, install all the libraries. Then,
+
+### `npm run start`
