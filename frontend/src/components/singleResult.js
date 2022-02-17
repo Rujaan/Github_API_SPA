@@ -131,9 +131,9 @@ const SingleResult = ({ repo, user, readme }) => {
           </div>
         </div>
 
-        <div className=" bg-gray-800 lg:p-2 rounded-lg text-white hidden md:block md:text-sm lg:text-md text-justify w-11/12">
+        <div className=" bg-gray-700 lg:p-2 rounded-lg text-white hidden md:block md:text-sm lg:text-md text-justify w-11/12">
           <p className=" font-semibold capitalize mb-5 ">Readme.md</p>
-          <ReactMarkdown escapeHtml={false}>{readme}</ReactMarkdown>
+          <ReactMarkdown>{readme}</ReactMarkdown>
         </div>
       </div>
     </div>

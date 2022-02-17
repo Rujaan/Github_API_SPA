@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setThemeDark, setThemeLight } from "../redux/themeRedux";
 
 const Toggle = () => {
+  //using the use selector and use dispatch hooks from redux toolkit
   const { theme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
+
   return (
     <div className="transition duration-500 ease-in-out rounded-full">
       {theme === "dark" ? (

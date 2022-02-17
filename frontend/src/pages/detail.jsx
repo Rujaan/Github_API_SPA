@@ -10,10 +10,11 @@ const Detail = () => {
   const userRepo = location.pathname.split("/")[3];
 
   const [repo, setRepo] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [readme, setReadme] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  // using axios to fetch the api of a particular page
   const getRepo = async () => {
     setIsLoading(true);
 
@@ -31,16 +32,16 @@ const Detail = () => {
     setIsLoading(false);
   };
 
+  // using axios to get the Readme.md page
   const getReadme = async () => {
     try {
       const readmeRes = await axios.get(
         `https://api.github.com/repos/${user}/${userRepo}/readme`
       );
 
+      //decoding file from base 64
       const data = atob(readmeRes.data.content);
-      console.log(data);
       setReadme(data);
-      console.log(readme);
     } catch (error) {
       setError(error);
     }

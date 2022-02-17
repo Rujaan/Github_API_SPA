@@ -19,6 +19,7 @@ const persistConfig = {
   storage,
 };
 
+// adding redux persist so that the data doesn't reset after every refresh and the value remains saved in the local storage
 const rootReducer = combineReducers({ theme: themeReducer });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

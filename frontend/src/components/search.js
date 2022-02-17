@@ -12,6 +12,7 @@ const Search = () => {
   const [page, setPage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  //using axios to fetch the value through API endpoints
   const getRepo = async () => {
     setIsLoading(true);
 
@@ -32,12 +33,8 @@ const Search = () => {
     console.log(repo);
     setIsLoading(false);
   };
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      getRepo();
-    }
-  };
 
+  //for the increase and decrease of the height in the search box
   const increaseHeight = () => {
     setNewCLass(true);
     console.log("magic");
@@ -48,6 +45,13 @@ const Search = () => {
     console.log("no magic");
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      getRepo();
+    }
+  };
+
+  //use effect get repo on every sort,order or page change
   useEffect(() => {
     getRepo();
   }, [sort, order, page]);
