@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../components/navbar";
 import SingleResult from "../components/singleResult";
-import ReactMarkdown from "react-markdown";
 
 const Detail = () => {
   const location = useLocation();
@@ -55,13 +54,11 @@ const Detail = () => {
   return (
     <div>
       <Navbar />
-      <a href={repo.html_url} target="_blank" rel="noreferrer">
-        Repo Name:{repo.name}
-      </a>
-      Owner:{user}
-      <p>issues:{repo.open_issues_count}</p>
-      <p>default Branch:{repo.default_branch}</p>
-      <ReactMarkdown>{readme}</ReactMarkdown>
+      {isLoading ? (
+        <div>Loading</div>
+      ) : (
+        <SingleResult repo={repo} user={user} readme={readme} />
+      )}
     </div>
   );
 };
