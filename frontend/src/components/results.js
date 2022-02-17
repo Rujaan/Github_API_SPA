@@ -38,7 +38,7 @@ const Result = ({ isLoading, repo }) => {
                   </p>
                   <div className="flex flex-col ">
                     <div className="flex gap-x-3">
-                      <div className=" flex">
+                      <div className=" flex justify-center items-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-6 w-6"
@@ -56,7 +56,7 @@ const Result = ({ isLoading, repo }) => {
                         <p className="ml-1">{repo.stargazers_count}</p>
                       </div>
 
-                      <div className="flex">
+                      <div className="flex justify-center items-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-6 w-6"
@@ -79,7 +79,7 @@ const Result = ({ isLoading, repo }) => {
                         </svg>
                         <p className=" ml-1">{repo.watchers_count}</p>
                       </div>
-                      <div className=" flex">
+                      <div className=" flex justify-center items-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-6 w-6"

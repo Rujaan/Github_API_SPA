@@ -94,7 +94,7 @@ const Search = () => {
           <input
             type="search"
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-transparent bg-clip-padding  rounded transition ease-in-out m-0 focus:text-gray-700   peer-placeholder-shown:h-screen "
+            className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-transparent bg-clip-padding  rounded transition ease-in-out m-0 focus:text-gray-700 dark:focus:text-white   peer-placeholder-shown:h-screen "
             placeholder="Search"
             aria-label="Search"
             onKeyDown={handleKeyDown}
@@ -123,8 +123,8 @@ const Search = () => {
               name="order"
               onChange={(e) => setOrder(e.target.value)}
             >
-              <option value="asc"> ascending</option>
-              <option value="desc"> descending</option>
+              <option value="asc"> low</option>
+              <option value="desc"> high</option>
             </select>
           </div>
 
